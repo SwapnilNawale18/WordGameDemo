@@ -5,7 +5,7 @@ namespace WordGameDemo
 {
     class WrodPuzzleGame
     {
-        internal bool SubCharCheck(string subStr)
+        bool SubCharCheck(string subStr)
         {
             string mainStr = "MASTER";
             char[] mainChar = mainStr.ToCharArray();
