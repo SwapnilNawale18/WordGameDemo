@@ -43,11 +43,14 @@ namespace WordGameDemo
                 enteredString = Console.ReadLine();
                 if (enteredString == "QUIT")
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.BackgroundColor = ConsoleColor.Cyan;
                     Console.WriteLine("Your Final score is: " + score);
                     break;
                 }
                 else if (enteredString == "RESTART")
                 {
+                    Console.WriteLine("--------------------------------------------------------------------");
                     possibleList.AddRange(enteredList);
                     enteredList.Clear();
                     score = 0;
@@ -79,7 +82,12 @@ namespace WordGameDemo
                     Console.WriteLine("Incorrect");
                 }
             } while (true);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.Yellow;
+
             Console.WriteLine("Thank You");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
         }
     }
     class Program
@@ -102,6 +110,7 @@ namespace WordGameDemo
             Console.WriteLine("\tiv. In order to restart the game, type 'RESTART'");
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine("--------------------------------------------------------------------");
             new WrodPuzzleGame().WordGame(wordsArr);
         }
     }
