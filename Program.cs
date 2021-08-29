@@ -5,11 +5,14 @@ namespace WordGameDemo
 {
     class WrodPuzzleGame
     {
-        internal bool SubCharCheck(string subchar)
+        internal bool SubCharCheck(string subStr)
         {
-            char[] mainChar = new char[] { 'M', 'A', 'S', 'T', 'E', 'R' };
-            char[] subChar = subchar.ToCharArray();
+            string mainStr = "MASTER";
+            char[] mainChar = mainStr.ToCharArray();
+            char[] subChar = subStr.ToCharArray();
             int i, j, m = mainChar.Length, n = subChar.Length;
+            if (mainStr == subStr)
+                return false;
             for (i = 0; i < n; i++)
             {
                 for (j = 0; j < m; j++)
@@ -22,11 +25,11 @@ namespace WordGameDemo
             }
             return true;
         }
-        internal void WordGame()
+        internal void WordGame(string[] words)
         {
             int score = 0;
             string enteredString;
-            string[] wordsArr = new string[] { "ARE", "ARM", "ART", "ATE", "EAR", "EAT", "ERA", "MET", "RAT", "SEA", "SET", "TEA", "ARMS", "ARTS", "EARS", "EAST", "MARS", "MART", "MATE", "MEAT", "META", "RATE", "RATS", "REST", "SAME", "SEAT", "STAR", "STEM", "TEAM", "TEAR", "TERM", "ARMET", "SMART", "SMEAR", "STARE", "STEAM" };
+            string[] wordsArr = words;
             ArrayList possibleList = new ArrayList();
             ArrayList enteredList = new ArrayList();
             String resp;
@@ -83,14 +86,23 @@ namespace WordGameDemo
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.WriteLine("Welcome to the game of WORD PUZZLE");
+            string[] wordsArr = new string[] { "ARE", "ARM", "ART", "ATE", "EAR", "EAT", "ERA", "MET", "RAT", "SEA", "SET", "TEA", "ARMS", "ARTS", "EARS", "EAST", "MARS", "MART", "MATE", "MEAT", "META", "RATE", "RATS", "REST", "SAME", "SEAT", "STAR", "STEM", "TEAM", "TEAR", "TERM", "ARMET", "SMART", "SMEAR", "STARE", "STEAM" };
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("\t\tWelcome to the game of WORD PUZZLE");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\tCreate words of three or more letter from the word MASTER");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.WriteLine("\tInstructions:");
             Console.WriteLine("\ti. Please enter the word in upper case");
             Console.WriteLine("\tii. Every correct word will add 1 point to your score");
             Console.WriteLine("\tiii. In order to quit from game, type 'QUIT'");
-            Console.WriteLine("Create words of three or more letters from word MASTER");
-            new WrodPuzzleGame().WordGame();
+            Console.WriteLine("\tiv. In order to restart the game, type 'RESTART'");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            new WrodPuzzleGame().WordGame(wordsArr);
         }
     }
 }
